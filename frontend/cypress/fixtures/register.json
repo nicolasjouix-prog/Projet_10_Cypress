@@ -1,5 +1,5 @@
 {
-  "email": "test22@test.fr",
+  "email": "test${Date.now()}@test.fr",
   "firstname": "John",
   "lastname": "Doe",
   "plainPassword": {

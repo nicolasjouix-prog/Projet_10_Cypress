@@ -11,16 +11,3 @@ export const apiRequest = (method: string, endpoint: string, body?: any) => {
     failOnStatusCode: false,
   });
 };
-
-export const apiRequestDeco = (
-  method: string,
-  endpoint: string,
-  body?: any,
-) => {
-  return cy.request({
-    method: method,
-    url: `${API_BASE_URL}${endpoint}`,
-    body: body,
-    failOnStatusCode: false,
-  });
-};

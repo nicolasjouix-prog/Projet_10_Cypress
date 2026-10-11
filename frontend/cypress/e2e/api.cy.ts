@@ -1,10 +1,9 @@
 // cypress/tests/api/api-users.spec.ts
 import { authToken } from '../support/commands';
 import { apiRequest } from '../support/api-helper';
-import { apiRequestDeco } from '../support/api-helper';
 
 it("GET /orders - Doit rejeter la requête si l'utilisateur n'est pas authentifié", () => {
-  apiRequestDeco('GET', '/orders').then((response) => {
+  apiRequest('GET', '/orders').then((response) => {
     expect(response.status).to.oneOf([401, 403]);
   });
 });
@@ -17,8 +16,8 @@ describe("Tests d'API pour les commandes", () => {
   });
 
   it('GET /orders - Récupération des commandes et "PUT /orders/add - Ajout d\'un produit à une commande et POST /orders - Création d\'une commande"', () => {
-    cy.fixture('add').then((add) => {
-      apiRequest('PUT', '/orders/add', add).then((response) => {
+    cy.fixture('addIndispoArticle').then((addIndispoArticle) => {
+      apiRequest('PUT', '/orders/add', addIndispoArticle).then((response) => {
         expect(response.status).to.eq(200);
         const orderId = response.body.orderLines[0].id;
 
@@ -41,8 +40,8 @@ describe("Tests d'API pour les commandes", () => {
     });
   });
   it("DELETE /orders/{id} - Suppression d'une commande", () => {
-    cy.fixture('add').then((add) => {
-      apiRequest('PUT', '/orders/add', add).then((response) => {
+    cy.fixture('addIndispoArticle').then((addIndispoArticle) => {
+      apiRequest('PUT', '/orders/add', addIndispoArticle).then((response) => {
         expect(response.status).to.eq(200);
         const orderId = response.body.orderLines[0].id;
         apiRequest('DELETE', `/orders/${orderId}/delete`).then((response) => {
