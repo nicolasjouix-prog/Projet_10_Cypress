@@ -1,5 +1,5 @@
 describe('Tests fonctionnels', () => {
-  it('Test du parcours de connexion utilisateur', () => {
+  it('Test du parcours utilisateur de connexion', () => {
     cy.visit('/');
     cy.contains('Connexion').click();
     cy.get('#username').should('be.visible').type('test2@test.fr');

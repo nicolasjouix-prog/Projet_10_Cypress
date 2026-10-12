@@ -1,5 +1,4 @@
 // cypress/tests/api/api-users.spec.ts
-import { authToken } from '../support/commands';
 import { apiRequest } from '../support/api-helper';
 
 it("GET /orders - Doit rejeter la requête si l'utilisateur n'est pas authentifié", () => {

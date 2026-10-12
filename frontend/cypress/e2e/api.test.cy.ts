@@ -2,7 +2,7 @@ import { apiRequest } from '../support/api-helper';
 
 it('Récupération du panier sans être connecté', () => {
   apiRequest('GET', '/orders').then((response) => {
-    expect(response.status).to.oneOf([401, 403]);
+    expect(response.status).to.eq(401);
   });
 });
 
